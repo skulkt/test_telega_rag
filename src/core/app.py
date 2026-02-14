@@ -1,6 +1,21 @@
+import asyncio
 from fastapi import FastAPI
+from contextlib import asynccontextmanager
 
-from core.config import get_settings
+from core.config import Settings, get_settings
+from infrastructure.telegram import bot
+
+
+def create_lifespan(settings: Settings):
+    @asynccontextmanager
+    async def lifespan(app: FastAPI):
+        app.state.pooling_task = asyncio.create_task(bot.start_pooling())
+
+        yield
+
+        app.state.pooling_task.cancel()
+
+    return lifespan
 
 
 def create_app() -> FastAPI:
@@ -10,6 +25,7 @@ def create_app() -> FastAPI:
         title="Telega",
         docs_url="/docs",
         openapi_url="/openapi.json",
+        lifespan=create_lifespan(settings),
     )
 
     return app
