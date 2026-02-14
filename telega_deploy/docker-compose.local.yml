@@ -1,0 +1,18 @@
+services:
+  api-main:
+    build:
+      context: ../
+    restart: always
+    ports:
+      - "7777:8000"
+    env_file:
+      - app/.env
+      - services/postgresql/.env
+    depends_on:
+      - db-main
+    networks:
+      - telega-network
+
+networks:
+  telega-network:
+    driver: bridge
