@@ -6,8 +6,7 @@
 ## 1. Клонирование репозитория
 
 ```
-git clone 
-cd название-репозитория
+git clone git@github.com:skulkt/test_telega_rag.git
 ```
 
 ## 2. Настройка окружения

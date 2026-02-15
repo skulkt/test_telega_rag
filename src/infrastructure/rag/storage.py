@@ -11,7 +11,7 @@ class ChromaStorage:
     def __init__(self):
         self.persist_dir = "/code/chroma.db"
         self.embeddings = HuggingFaceEmbeddings(
-            model_name=f"/code/models/{settings.SENTENCES_MODEL}",
+            model_name=f"/code/models/{settings.SENTENCES_MODEL_DIR}",
             model_kwargs={"device": "cpu"},
         )
 

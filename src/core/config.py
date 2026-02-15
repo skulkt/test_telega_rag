@@ -25,7 +25,7 @@ class Settings(BaseSettings):
     REDIS_PORT: int
 
     LLM_AGENT_NAME: str
-    SENTENCES_MODEL: str
+    SENTENCES_MODEL_DIR: str
 
     @property
     def get_redis_url(self):
