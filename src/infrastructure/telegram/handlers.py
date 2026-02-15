@@ -15,8 +15,9 @@ async def start(message: types.Message):
 
 @router.message()
 async def echo(message: types.Message):
+    user_id = message.from_user.id
     response = await telegram_service.process_client_message(
-        client_message=message.text
+        client_message=message.text, user_id=str(user_id)
     )
 
     await message.answer(response)

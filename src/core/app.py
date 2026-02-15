@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 
 from core.config import Settings, get_settings
 from infrastructure.telegram import bot
+from api.controllers import routers_v1
 
 
 def create_lifespan(settings: Settings):
@@ -18,6 +19,10 @@ def create_lifespan(settings: Settings):
     return lifespan
 
 
+def register_routers(app: FastAPI):
+    app.include_router(routers_v1)
+
+
 def create_app() -> FastAPI:
     settings = get_settings()
 
@@ -27,5 +32,7 @@ def create_app() -> FastAPI:
         openapi_url="/openapi.json",
         lifespan=create_lifespan(settings),
     )
+
+    register_routers(app)
 
     return app
