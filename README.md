@@ -13,16 +13,18 @@ git clone git@github.com:skulkt/test_telega_rag.git
 
 Перейдите в директорию telega_deploy/app и создайте файл .env.
 Отредактируйте файл .env, используя следующие параметры:
-```dotenv
-TELEGRAM_TOKEN	Ваш токен от BotFather
-GIGACHAT_CLIENT_ID	Client ID из панели GigaChat
-GIGACHAT_CLIENT_SECRET	Secret key для GigaChat
-GIGACHAT_SCOPE	Scope из панели GigaChat
-REDIS_HOST	Хост Redis (например, redis из docker-compose)
-REDIS_PORT	Порт Redis (по умолчанию 6379)
-LLM_AGENT_NAME	Имя агента, указанное в prompt.yaml
-SENTENCES_MODEL_DIR	Название папки с моделью в директории embeddings
-```
+
+| Параметр                  | Значение                                              |
+| :---                      |    :----:                                             |
+| TELEGRAM_TOKEN            | Ваш токен от BotFather                                |
+| GIGACHAT_CLIENT_ID        | Client ID из панели GigaChat                          |
+| GIGACHAT_CLIENT_SECRET    | Secret key из панели GigaChat                         |
+| GIGACHAT_SCOPE            | Scope из панели GigaChat                              |
+| REDIS_HOST                | Хост Redis (например, redis из docker-compose)        |
+| REDIS_PORT                | Порт Redis (по умолчанию 6379)                        |
+| LLM_AGENT_NAME            | Имя агента, указанное в prompt.yaml (например main)   |
+| SENTENCES_MODEL_DIR       | Название папки с моделью в директории embeddings      |
+| LLM_HISTORY_TTL           | Время хранения истории пользователя для контекста (в секундах) |
 
 ## 🧠 Подготовка модели Embeddings
 
